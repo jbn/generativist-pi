@@ -9,7 +9,7 @@ This repo is the start of moving reusable Pi resources out of `~/.pi` and into a
 Once this repository is pushed to GitHub and tagged, install it with:
 
 ```bash
-pi install git:github.com/jbn/generativist-pi@v0.1.0
+pi install git:github.com/jbn/generativist-pi@v0.0.1
 ```
 
 For local development/testing from this checkout:
@@ -72,5 +72,5 @@ git push origin main --tags
 Then install the new tag:
 
 ```bash
-pi install git:github.com/jbn/generativist-pi@v0.1.1
+pi install git:github.com/jbn/generativist-pi@v0.0.2
 ```
