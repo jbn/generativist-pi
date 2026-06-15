@@ -89,6 +89,22 @@ pi remove npm:@juicesharp/rpiv-ask-user-question
 
 Provider/model/auth settings remain local machine settings and are not bundled by Pi packages.
 
+## Maintenance
+
+Update every direct npm dependency in this kit to `latest`, validate the package, commit `package.json`/`package-lock.json`, and push `main`:
+
+```bash
+make update-and-push
+```
+
+Useful related targets:
+
+```bash
+make deps
+make update-packages
+make validate
+```
+
 ## Release a new version
 
 ```bash
