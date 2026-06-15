@@ -49,10 +49,12 @@ Pi loads resources declared in `package.json`:
     "extensions": [
       "./extensions",
       "./node_modules/pi-powerline-footer/index.ts",
-      "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts"
+      "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts",
+      "./node_modules/pi-simplify/dist/index.js",
+      "./node_modules/pi-subagents/src/extension/index.ts"
     ],
-    "skills": ["./skills"],
-    "prompts": ["./prompts"],
+    "skills": ["./skills", "./node_modules/pi-subagents/skills"],
+    "prompts": ["./prompts", "./node_modules/pi-subagents/prompts"],
     "themes": ["./themes"]
   }
 }
@@ -74,17 +76,19 @@ The current global Pi settings included `npm:pi-powerline-footer`. This kit now 
 "./node_modules/pi-powerline-footer/index.ts"
 ```
 
-This kit also bundles `@juicesharp/rpiv-ask-user-question` and loads it from:
+This kit also bundles these npm Pi packages and loads their resources from `node_modules/`:
 
-```json
-"./node_modules/@juicesharp/rpiv-ask-user-question/index.ts"
-```
+- `@juicesharp/rpiv-ask-user-question`
+- `pi-simplify`
+- `pi-subagents` extension, skills, and prompts
 
-If either extension is still installed separately, remove it after installing this kit to avoid loading it twice:
+If any bundled package is still installed separately, remove it after installing this kit to avoid loading it twice:
 
 ```bash
 pi remove npm:pi-powerline-footer
 pi remove npm:@juicesharp/rpiv-ask-user-question
+pi remove npm:pi-simplify
+pi remove npm:pi-subagents
 ```
 
 Provider/model/auth settings remain local machine settings and are not bundled by Pi packages.
