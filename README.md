@@ -2,11 +2,13 @@
 
 Portable Pi configuration packaged for installation from git.
 
-This repo is the start of moving reusable Pi resources out of `~/.pi` and into a versioned package.
+Public repo: <https://github.com/jbn/generativist-pi>
+
+This repo is my portable Pi configuration kit: one repo I can install or update on any computer to get my preferred Pi extensions, skills, prompts, themes, and notes scaffolding.
 
 ## Install
 
-Recommended during active development: install from the public GitHub repo without a pinned ref. This tracks the default branch, so Pi can notice when new commits are available.
+Recommended: install from the public GitHub repo without a pinned ref. This tracks the default branch, so Pi can notice when new commits are available.
 
 ```bash
 pi install git:github.com/jbn/generativist-pi
@@ -18,13 +20,13 @@ Refresh/update later with:
 pi update --extensions
 ```
 
-For a fixed version, install a tagged ref instead:
+For a fixed snapshot, install a tagged ref instead:
 
 ```bash
 pi install git:github.com/jbn/generativist-pi@v0.0.1
 ```
 
-Pinned git tags do not auto-advance to newer tags; move them explicitly with `pi install git:github.com/jbn/generativist-pi@v0.0.2`.
+Pinned git tags do not auto-advance to newer tags; move them explicitly with `pi install git:github.com/jbn/generativist-pi@<tag>`.
 
 This package is not published to npm. Do not use `npm:generativist-pi` unless it is published there later.
 
@@ -34,8 +36,6 @@ For local development/testing from this checkout:
 npm install
 pi -e .
 ```
-
-If the GitHub owner/repo changes, update the install URL and the `repository.url` in `package.json`.
 
 ## Package layout
 
@@ -68,19 +68,14 @@ Current directories:
 - `themes/` - Pi themes (`.json`)
 - `NOTES/` - personal/project Markdown notes (not loaded by Pi automatically)
 
-## Migrated from `~/.pi`
+## Bundled Pi packages
 
-The current global Pi settings included `npm:pi-powerline-footer`. This kit now installs it as an npm dependency and loads it from:
+This kit currently bundles these npm Pi packages and loads their resources from `node_modules/`:
 
-```json
-"./node_modules/pi-powerline-footer/index.ts"
-```
-
-This kit also bundles these npm Pi packages and loads their resources from `node_modules/`:
-
-- `@juicesharp/rpiv-ask-user-question`
-- `pi-simplify`
-- `pi-subagents` extension, skills, and prompts
+- [`pi-powerline-footer`](https://github.com/nicobailon/pi-powerline-footer) - powerline-style Pi footer/status bar
+- [`@juicesharp/rpiv-ask-user-question`](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question) - structured `ask_user_question` tool
+- [`pi-simplify`](https://github.com/MattDevy/pi-extensions/tree/main/packages/pi-simplify) - code clarity/simplification review command
+- [`pi-subagents`](https://github.com/nicobailon/pi-subagents) - subagent delegation extension, skills, and prompts
 
 If any bundled package is still installed separately, remove it after installing this kit to avoid loading it twice:
 
@@ -95,7 +90,21 @@ Provider/model/auth settings remain local machine settings and are not bundled b
 
 ## Maintenance
 
-Update every direct npm dependency in this kit to `latest`, validate the package, commit `package.json`/`package-lock.json`, and push `main`:
+Validate the package:
+
+```bash
+make validate
+```
+
+Bump versions before committing meaningful changes:
+
+```bash
+make bump-patch   # dependency updates, docs/maintenance, small fixes
+make bump-minor   # new bundled package or new skill/prompt/theme family
+make bump-major   # breaking removals/renames/behavior changes
+```
+
+Update every direct npm dependency in this kit to `latest`, bump patch, validate, commit `package.json`/`package-lock.json`, and push `main`:
 
 ```bash
 make update-and-push
@@ -106,22 +115,13 @@ Useful related targets:
 ```bash
 make deps
 make update-packages
-make validate
+make tag-current
 ```
 
-## Release a new version
+## Version tags
+
+Normal installs should track `main` with `git:github.com/jbn/generativist-pi`. Tags are optional fixed snapshots. To tag the current package version and push the tag:
 
 ```bash
-npm version patch --no-git-tag-version
-VERSION=$(node -p "require('./package.json').version")
-git add .
-git commit -m "Release v$VERSION"
-git tag "v$VERSION"
-git push origin main --tags
-```
-
-Then install the new tag:
-
-```bash
-pi install git:github.com/jbn/generativist-pi@v0.0.2
+make tag-current
 ```

@@ -1,6 +1,6 @@
 {
   "name": "generativist-pi",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Portable Pi package for the Generativist Pi configuration.",
   "private": true,
   "keywords": [
