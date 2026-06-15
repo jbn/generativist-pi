@@ -36,5 +36,9 @@
     "themes": [
       "./themes"
     ]
-  }
+  },
+  "bundleDependencies": [
+    "@juicesharp/rpiv-ask-user-question",
+    "pi-powerline-footer"
+  ]
 }
