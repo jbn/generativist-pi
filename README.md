@@ -6,11 +6,27 @@ This repo is the start of moving reusable Pi resources out of `~/.pi` and into a
 
 ## Install
 
-Once this repository is pushed to GitHub and tagged, install it with:
+Recommended during active development: install from the public GitHub repo without a pinned ref. This tracks the default branch, so Pi can notice when new commits are available.
+
+```bash
+pi install git:github.com/jbn/generativist-pi
+```
+
+Refresh/update later with:
+
+```bash
+pi update --extensions
+```
+
+For a fixed version, install a tagged ref instead:
 
 ```bash
 pi install git:github.com/jbn/generativist-pi@v0.0.1
 ```
+
+Pinned git tags do not auto-advance to newer tags; move them explicitly with `pi install git:github.com/jbn/generativist-pi@v0.0.2`.
+
+This package is not published to npm. Do not use `npm:generativist-pi` unless it is published there later.
 
 For local development/testing from this checkout:
 
@@ -54,6 +70,12 @@ The current global Pi settings included `npm:pi-powerline-footer`. This kit now 
 
 ```json
 "./node_modules/pi-powerline-footer/index.ts"
+```
+
+If `npm:pi-powerline-footer` is still installed separately, remove it after installing this kit to avoid loading it twice:
+
+```bash
+pi remove npm:pi-powerline-footer
 ```
 
 Provider/model/auth settings remain local machine settings and are not bundled by Pi packages.
