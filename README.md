@@ -48,7 +48,8 @@ Pi loads resources declared in `package.json`:
   "pi": {
     "extensions": [
       "./extensions",
-      "./node_modules/pi-powerline-footer/index.ts"
+      "./node_modules/pi-powerline-footer/index.ts",
+      "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts"
     ],
     "skills": ["./skills"],
     "prompts": ["./prompts"],
@@ -63,6 +64,7 @@ Current directories:
 - `skills/` - Pi skills (`SKILL.md` folders or top-level `.md` files)
 - `prompts/` - reusable prompt templates (`.md`)
 - `themes/` - Pi themes (`.json`)
+- `NOTES/` - personal/project Markdown notes (not loaded by Pi automatically)
 
 ## Migrated from `~/.pi`
 
@@ -72,10 +74,17 @@ The current global Pi settings included `npm:pi-powerline-footer`. This kit now 
 "./node_modules/pi-powerline-footer/index.ts"
 ```
 
-If `npm:pi-powerline-footer` is still installed separately, remove it after installing this kit to avoid loading it twice:
+This kit also bundles `@juicesharp/rpiv-ask-user-question` and loads it from:
+
+```json
+"./node_modules/@juicesharp/rpiv-ask-user-question/index.ts"
+```
+
+If either extension is still installed separately, remove it after installing this kit to avoid loading it twice:
 
 ```bash
 pi remove npm:pi-powerline-footer
+pi remove npm:@juicesharp/rpiv-ask-user-question
 ```
 
 Provider/model/auth settings remain local machine settings and are not bundled by Pi packages.

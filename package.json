@@ -14,15 +14,18 @@
     "url": "git+ssh://git@github.com/jbn/generativist-pi.git"
   },
   "dependencies": {
+    "@juicesharp/rpiv-ask-user-question": "1.20.0",
     "pi-powerline-footer": "0.6.1"
   },
   "bundledDependencies": [
+    "@juicesharp/rpiv-ask-user-question",
     "pi-powerline-footer"
   ],
   "pi": {
     "extensions": [
       "./extensions",
-      "./node_modules/pi-powerline-footer/index.ts"
+      "./node_modules/pi-powerline-footer/index.ts",
+      "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts"
     ],
     "skills": [
       "./skills"
