@@ -1,0 +1,37 @@
+{
+  "name": "generativist-pi",
+  "version": "0.1.0",
+  "description": "Portable Pi package for the Generativist Pi configuration.",
+  "private": true,
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-config"
+  ],
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jbn/generativist-pi.git"
+  },
+  "dependencies": {
+    "pi-powerline-footer": "0.6.1"
+  },
+  "bundledDependencies": [
+    "pi-powerline-footer"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions",
+      "./node_modules/pi-powerline-footer/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  }
+}
