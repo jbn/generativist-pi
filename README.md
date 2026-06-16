@@ -51,9 +51,10 @@ Pi loads resources declared in `package.json`:
       "./node_modules/pi-powerline-footer/index.ts",
       "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts",
       "./node_modules/pi-simplify/dist/index.js",
-      "./node_modules/pi-subagents/src/extension/index.ts"
+      "./node_modules/pi-subagents/src/extension/index.ts",
+      "./node_modules/pi-web-access/index.ts"
     ],
-    "skills": ["./skills", "./node_modules/pi-subagents/skills"],
+    "skills": ["./skills", "./node_modules/pi-subagents/skills", "./node_modules/pi-web-access/skills"],
     "prompts": ["./prompts", "./node_modules/pi-subagents/prompts"],
     "themes": ["./themes"]
   }
@@ -76,6 +77,7 @@ This kit currently bundles these npm Pi packages and loads their resources from 
 - [`@juicesharp/rpiv-ask-user-question`](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question) - structured `ask_user_question` tool
 - [`pi-simplify`](https://github.com/MattDevy/pi-extensions/tree/main/packages/pi-simplify) - code clarity/simplification review command
 - [`pi-subagents`](https://github.com/nicobailon/pi-subagents) - subagent delegation extension, skills, and prompts
+- [`pi-web-access`](https://github.com/nicobailon/pi-web-access) - web search, URL fetching, GitHub repo cloning, PDF extraction, and video analysis tools
 
 If any bundled package is still installed separately, remove it after installing this kit to avoid loading it twice:
 
@@ -84,6 +86,7 @@ pi remove npm:pi-powerline-footer
 pi remove npm:@juicesharp/rpiv-ask-user-question
 pi remove npm:pi-simplify
 pi remove npm:pi-subagents
+pi remove npm:pi-web-access
 ```
 
 Provider/model/auth settings remain local machine settings and are not bundled by Pi packages.

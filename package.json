@@ -1,6 +1,6 @@
 {
   "name": "generativist-pi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Portable Pi package for the Generativist Pi configuration.",
   "private": true,
   "keywords": [
@@ -17,13 +17,15 @@
     "@juicesharp/rpiv-ask-user-question": "1.20.0",
     "pi-powerline-footer": "0.6.1",
     "pi-simplify": "0.2.2",
-    "pi-subagents": "0.28.0"
+    "pi-subagents": "0.28.0",
+    "pi-web-access": "0.10.7"
   },
   "bundledDependencies": [
     "@juicesharp/rpiv-ask-user-question",
     "pi-powerline-footer",
     "pi-simplify",
-    "pi-subagents"
+    "pi-subagents",
+    "pi-web-access"
   ],
   "pi": {
     "extensions": [
@@ -31,11 +33,13 @@
       "./node_modules/pi-powerline-footer/index.ts",
       "./node_modules/@juicesharp/rpiv-ask-user-question/index.ts",
       "./node_modules/pi-simplify/dist/index.js",
-      "./node_modules/pi-subagents/src/extension/index.ts"
+      "./node_modules/pi-subagents/src/extension/index.ts",
+      "./node_modules/pi-web-access/index.ts"
     ],
     "skills": [
       "./skills",
-      "./node_modules/pi-subagents/skills"
+      "./node_modules/pi-subagents/skills",
+      "./node_modules/pi-web-access/skills"
     ],
     "prompts": [
       "./prompts",
